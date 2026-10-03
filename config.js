@@ -1,0 +1,35 @@
+const config = {
+  nomeBanner: "BookBarber",
+  descBanner: "Corte com estilo, sempre no capricho",
+  imagensBanner: [
+    "media/imagem-banner-1.jpg",
+    "media/imagem-banner-2.jpg",
+    "media/imagem-banner-3.jpg",
+  ],
+  horariosSemana: {
+    segunda:  { aberto: true,  horarios: ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"] },
+    terca:    { aberto: true,  horarios: ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"] },
+    quarta:   { aberto: true,  horarios: ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"] },
+    quinta:   { aberto: true,  horarios: ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"] },
+    sexta:    { aberto: true,  horarios: ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"] },
+    sabado:   { aberto: true,  horarios: ["08:00", "09:00", "10:00"] },
+    domingo:  { aberto: false, horarios: [] },
+  },
+  produtos: [
+  { nome: "Pomada Modeladora", preco: "R$ 45,00", imagem: "media/produto-1.jpg" },
+  { nome: "Óleo para Barba", preco: "R$ 38,00", imagem: "media/produto-2.jpg" },
+  { nome: "Shampoo Anticaspa", preco: "R$ 32,00", imagem: "media/produto-3.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  { nome: "Minoxidil", preco: "R$ 30,00", imagem: "media/produto-4.jpg" },
+  ],
+  contato: {
+  telefone: "(11) 99999-9999",
+  endereco: "Rua Miramar, 123 - Anchieta-SC",
+  instagram: "https://instagram.com/bookbarber",
+  whatsapp: "https://wa.me/5549999999999",
+  },
+};

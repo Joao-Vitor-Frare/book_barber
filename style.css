@@ -1,0 +1,592 @@
+@font-face {
+    font-family: "Caacupe One";
+    src: url("fonts/CaacupeOne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Slabo";
+    src: url("fonts/Slabo13px-Regular.ttf") format("truetype");
+}
+
+body{
+    background-color: rgb(34, 34, 34);
+    color: white;
+}
+
+.barranav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+
+    background-color: black;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.30);
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px 5px;
+    box-sizing: border-box;
+
+    z-index: 1000;
+
+    font-family: "Caacupe One", sans-serif;
+}
+
+.logo img{
+    top: 0;
+    left: 0;
+    margin-left: 35px;
+
+
+    height: 55px;
+    width: auto;
+}
+
+.logo-menu-aberto{
+    display: none;
+}
+
+nav{
+    position: absolute;
+    display: flex;
+    gap: 30px;
+
+    left: 50.8%;
+    transform: translate(-50%);
+}
+
+nav a{
+    text-decoration: none;
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+}
+
+.botoes-direita {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: auto;
+    margin-right: 40px;
+    z-index: 1001;
+}
+
+
+.login-nav {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 7px 11px;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.login-nav:hover {
+    border-color: #888;
+}
+
+.config-adm[hidden] {
+    display: none !important;
+}
+
+.config-adm {
+    text-decoration: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.config-adm img {
+    height: 30px;
+}
+
+.botao-menu {
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: none;
+}
+
+.linha-menu{
+    display: block;
+    margin-bottom: 3px;
+    width: 18px;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.config-adm img{
+    height: 23px;
+}
+
+@media (max-width: 900px) {
+    .botao-menu{
+        display: block;
+    }
+
+    .config-adm {
+        transform: translateX(150px);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    body.menu-aberto .config-adm {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .pronto .config-adm {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    body.redimensionando nav {
+        transition: none !important;
+}
+
+    nav{
+        position: fixed;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        padding-top: 150px;
+        padding-left: 40px;
+        gap: 40px;
+        background-color: black;
+        opacity: .90;
+
+        transform: translatex(100%);
+    }
+
+    .pronto nav {
+        transition: transform 0.3s ease;
+    }
+
+    nav a{
+        font-size: 20px;
+    }
+
+    nav.menu-aberto{
+        transform: translateX(0);
+    }
+
+    .risco{
+        border: 1px solid rgb(73, 73, 73);
+        margin-right: 90px;
+    }
+
+    .logo-menu-aberto{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top:3px ;
+        margin-left: 40px;
+
+        height: 55px;
+        width: auto;
+    }
+
+    .botao-menu.menu-aberto .linha-menu:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .botao-menu.menu-aberto .linha-menu:nth-child(2) {
+        opacity: 0;
+    }
+
+    .botao-menu.menu-aberto .linha-menu:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+    
+}
+
+.banner{
+    position: relative;
+    display: flex;
+    
+    top: 65px;
+    height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.banner .bg-slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: -1;
+}
+
+.banner .bg-slide.ativo {
+    opacity: 1;
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 20px;
+    top: 83vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.banner-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.banner-dots .dot.ativo {
+    background: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 900px) {
+    .banner-dots {
+        display: none;
+    }
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 76vh;
+    left: 0;
+    width: 100%;
+    height: 24%;
+    background: linear-gradient(to top, rgba(34, 34, 34, 1), rgba(0, 0, 0 ,0));
+}
+
+.escritas-banner{
+    margin-top: 25vh;
+    padding-left: clamp(40px, calc(40vw - 400px), 150px);
+}
+
+.nome-banner{
+    font-size: clamp(30px, 7vw, 80px);
+}
+
+.desc-banner{
+    font-size: clamp(18px, 2.5vw, 30px);
+}
+
+#agenda{
+    margin-top: 150px;
+    padding: 40px 20px;
+}
+
+.texto-agenda{
+    width: max-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+}
+
+#calendario{
+    max-height: 73vh;
+    max-width: 50vw;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+
+#horariosDisponiveis {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#horariosDisponiveis h3 {
+    margin-bottom: 14px;
+    font-size: 30px;
+}
+
+.slot-horario {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 18px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.slot-horario:hover {
+    background: #4CAF50;
+    }
+
+.slot-horario.ocupado {
+    background: #5e1818;
+    color: #777;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+#produtos{
+    margin-top: 150px;
+}
+
+.texto-produtos{
+    text-align: center;
+    font-size: 40px;
+}
+
+
+.carrossel-produtos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.trilho-produtos {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.trilho-produtos::-webkit-scrollbar {
+    display: none;
+}
+
+.card-produto {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+    background: #2c2c2c;
+    padding: 15px;
+    text-align: center;
+    font-family: "Slabo", sans-serif;
+}
+
+.card-produto img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    background-color: white;
+}
+
+.card-produto h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.preco-produto {
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.seta {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+}
+
+.seta:hover {
+    background: #4CAF50;
+}
+
+@media (max-width: 900px) {
+    .card-produto {
+        flex: 0 0 180px;
+    }
+
+    .seta {
+        display: none;
+    }
+}
+
+#contato {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.texto-contato {
+    margin-bottom: 30px;
+
+}
+
+.info-contato p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Slabo", sans-serif;
+}
+
+.redes-contato {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.redes-contato a {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: "Slabo", sans-serif;
+    transition: background 0.2s ease;
+}
+
+.redes-contato a:hover {
+    background: #4CAF50;
+}
+
+.icon-telefone{
+    height: 15px;
+}
+
+.icon-endereco{
+    height: 15px;
+}
+
+/* Integração com o backend */
+.subtexto-agenda {
+    text-align: center;
+    font-family: "Slabo", sans-serif;
+    font-size: 18px;
+    color: #cfcfcf;
+    margin-top: -20px;
+}
+
+.erro-api {
+    color: #ff8d8d;
+}
+
+.modal-agendamento {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .78);
+    z-index: 3000;
+}
+
+.modal-agendamento.aberto {
+    display: flex;
+}
+
+.modal-conteudo {
+    position: relative;
+    width: min(520px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #242424;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+    font-family: "Slabo", sans-serif;
+}
+
+.modal-conteudo h2 {
+    margin-top: 0;
+    font-family: "Caacupe One", sans-serif;
+}
+
+.modal-fechar {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.resumo-agendamento {
+    color: #9fdf9f;
+    font-size: 18px;
+}
+
+.modal-conteudo label {
+    display: block;
+    margin: 13px 0;
+}
+
+.modal-conteudo input,
+.modal-conteudo select,
+.modal-conteudo textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #191919;
+    color: white;
+    font: inherit;
+}
+
+.botao-confirmar-agendamento {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 0;
+    border-radius: 6px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-family: "Caacupe One", sans-serif;
+    font-size: 16px;
+}
+
+.botao-confirmar-agendamento:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.mensagem-agendamento {
+    min-height: 20px;
+    margin: 12px 0 0;
+}
+
+.mensagem-agendamento.sucesso { color: #7fe083; }
+.mensagem-agendamento.erro { color: #ff8d8d; }
+
+@media (max-width: 900px) {
+    #calendario {
+        max-width: 95vw;
+    }
+}
